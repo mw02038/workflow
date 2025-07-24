@@ -5,10 +5,10 @@ name: EnvironmentWorkflow
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  #push:
-  #  branches: [ main ]
-  #pull_request:
-  #  branches: [ main ]
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -29,7 +29,7 @@ jobs:
         SECRET: ${{ secrets.Greeting }}
       run: |
         echo "Job 1 running on Test"
-        if [ $SECRET = "TestTestTest" ]; then echo "Test"; fi
+        if [ $SECRET = "hello" ]; then echo "Test"; fi
       
   job2:
     runs-on: ubuntu-latest
@@ -43,7 +43,7 @@ jobs:
         SECRET: ${{ secrets.Greeting }}
       run:  |
         echo "Job 2 running on QA"
-        if [ $SECRET = "QAQAQA" ]; then echo "QA"; fi
+        if [ $SECRET = "hihihi" ]; then echo "QA"; fi
       
   job3:
     runs-on: ubuntu-latest
@@ -56,7 +56,7 @@ jobs:
         SECRET: ${{ secrets.Greeting }}
       run:  |
         echo "Job 3 running on no specific environment"
-        if [ $SECRET = "RepoRepoRepo" ]; then echo "Repo"; fi
+        if [ $SECRET = "salutations" ]; then echo "Repo"; fi
       
   job4:
     runs-on: ubuntu-latest
@@ -70,4 +70,4 @@ jobs:
         SECRET: ${{ secrets.Greeting }}
       run:  |
         echo "Job 4 running on Prod"
-        if [ $SECRET = "ProdProdProd" ]; then echo "Prod"; fi
+        if [ $SECRET = "sup" ]; then echo "Prod"; fi
